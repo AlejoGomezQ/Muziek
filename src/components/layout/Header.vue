@@ -7,11 +7,14 @@
             <strong>🎸 Music Service</strong>
           </div>
         </div>
-        <div class="nav-right menu"></div>
+        <div class="nav-right menu">
+          <router-link to="/" class="nav-item mr-4">Buscar</router-link>
+          <router-link to="about" class="nav-item">Nosotros</router-link>
+        </div>
       </div>
     </nav>
     <div class="body">
-      <div class="title container text-center">
+      <div class="title container text-center mt-3">
         <h1>Music Service</h1>
         <h3>La escuchas, la buscas, la encuentras 🎵!</h3>
         <Player />
@@ -35,7 +38,7 @@ export default {
 <style scoped>
 section {
   width: 100%;
-  height: 450px;
+  height: 470px;
   position: relative;
 }
 
@@ -59,6 +62,18 @@ section::before {
 .navbar-brand {
   width: 100%;
   height: 50px;
+}
+
+.nav-item {
+  text-decoration: none;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.nav-item:hover {
+  color: #000000;
 }
 
 .title {

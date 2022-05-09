@@ -18,4 +18,11 @@ trackService.search = function (q) {
     .catch((err) => console.error(err));
 };
 
+trackService.getById = function (id) {
+  return axios
+    .get(`${baseUrl}/tracks/${id}`)
+    .then((response) => response.data)
+    .catch((err) => console.error(err));
+};
+
 export default trackService;

@@ -8,7 +8,6 @@
 
 <script>
 // Styles
-import "@/scss/main.scss";
 
 // Components
 import MusicHeader from "@/components/layout/Header";
@@ -29,5 +28,6 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-4">
+  <div class="card mb-4" v-if="track && track.album">
     <div class="card-image__container">
       <figure class="img-thumbnail">
         <img :src="track.album.images[0].url" alt="" class="card-img-top" />
@@ -22,6 +22,9 @@
         <a href="" @click.prevent="selectTrack">
           <span>▶️</span>
         </a>
+        <a href="" @click.prevent="goToTrack(track.id)">
+          <span>🌍</span>
+        </a>
       </div>
     </div>
   </div>
@@ -43,6 +46,15 @@ export default {
       this.$emit("select", this.track.id);
 
       this.$bus.$emit("setTrack", this.track);
+    },
+
+    goToTrack(id) {
+      this.$router.push({
+        name: "TrackDetail",
+        params: {
+          id,
+        },
+      });
     },
   },
 };
