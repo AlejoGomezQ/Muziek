@@ -1,7 +1,7 @@
 <template>
   <section class="header">
     <nav class="navbar">
-      <div class="container">
+      <div class="container nav">
         <div class="nav-left">
           <div class="navbar-brand">
             <strong>🎸 Music Service</strong>

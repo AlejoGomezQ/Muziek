@@ -8,7 +8,7 @@
     </div>
     <div class="col-12 mb-2">
       <strong class="mr-4">{{ track.name }}</strong>
-      <small>{{ track.duration_ms }}</small>
+      <small>{{ track.duration_ms | msToMin }}</small>
     </div>
     <div class="col-12">
       <audio :src="track.preview_url" controls></audio>

@@ -41,6 +41,7 @@
             :key="index"
           >
             <Track
+              v-blur="t.preview_url"
               :track="t"
               @select="setTrack"
               :class="{ active: t.id === selectedTrack }"

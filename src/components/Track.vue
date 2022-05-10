@@ -17,14 +17,14 @@
       </div>
     </div>
     <div class="content text-center">
-      <small>{{ track.duration_ms }}</small>
+      <small>{{ track.duration_ms | msToMin }}</small>
       <div class="text-center">
-        <a href="" @click.prevent="selectTrack">
+        <button href="" @click.prevent="selectTrack" class="btn">
           <span>▶️</span>
-        </a>
-        <a href="" @click.prevent="goToTrack(track.id)">
+        </button>
+        <button href="" @click.prevent="goToTrack(track.id)" class="btn">
           <span>🌍</span>
-        </a>
+        </button>
       </div>
     </div>
   </div>
@@ -43,12 +43,20 @@ export default {
 
   methods: {
     selectTrack() {
+      if (!this.track.preview_url) {
+        return;
+      }
+
       this.$emit("select", this.track.id);
 
       this.$bus.$emit("setTrack", this.track);
     },
 
     goToTrack(id) {
+      if (!this.track.preview_url) {
+        return;
+      }
+
       this.$router.push({
         name: "TrackDetail",
         params: {
@@ -73,5 +81,9 @@ img {
 h6 > strong,
 h6 {
   font-size: 1rem;
+}
+
+button {
+  outline: none !important;
 }
 </style>

@@ -7,8 +7,6 @@
 </template>
 
 <script>
-// Styles
-
 // Components
 import MusicHeader from "@/components/layout/Header";
 import MusicFooter from "@/components/layout/Footer";
