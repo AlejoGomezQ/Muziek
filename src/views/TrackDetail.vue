@@ -1,7 +1,6 @@
 <template>
-  <div class="container">
-    <Loader v-show="isLoading" />
-    <div class="row" v-show="!isLoading">
+  <div class="container" v-if="track && track.id">
+    <div class="row">
       <div class="col-4">
         <figure class="media-left">
           <p class="image text-center">
@@ -21,7 +20,7 @@
       <div class="col-8">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h1 class="title">{{ track.name }}</h1>
+            <h1 class="title">{{ trackTitle }}</h1>
           </div>
           <div class="panel-body">
             <article class="media">
@@ -49,37 +48,35 @@
 </template>
 
 <script>
-import trackService from "@/services/track";
-
 import trackMixin from "@/mixins/track";
 
-import Loader from "@/components/shared/Loader";
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
   name: "TrackDetail",
 
   mixins: [trackMixin],
 
-  data() {
-    return {
-      track: {},
-      isLoading: false,
-    };
-  },
-
-  components: {
-    Loader,
-  },
-
   created() {
     const id = this.$route.params.id;
 
     this.isLoading = true;
 
-    trackService.getById(id).then((response) => {
-      this.track = response;
-      this.isLoading = false;
-    });
+    if (!this.track || !this.track.id || this.track.id !== id) {
+      this.getTrackById({ id }).then(() => {
+        console.log("Track loaded...");
+        this.isLoading = false;
+      });
+    }
+  },
+
+  computed: {
+    ...mapState(["track"]),
+    ...mapGetters(['trackTitle'])
+  },
+
+  methods: {
+    ...mapActions(["getTrackById"]),
   },
 };
 </script>

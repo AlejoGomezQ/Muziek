@@ -5,9 +5,7 @@ const trackMixin = {
         return;
       }
 
-      this.$emit("select", this.track.id);
-
-      this.$bus.$emit("setTrack", this.track);
+      this.$store.commit("setTrack", this.track);
     },
   },
 };
